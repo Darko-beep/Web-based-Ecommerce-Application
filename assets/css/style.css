@@ -1,0 +1,336 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.nav-buttons{
+    margin-left: 60%;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;  
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+h1{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: green;
+}
+
+h2{
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+h3{
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+h4{
+    font-size: 1.2rem;
+    font-weight:600;
+}
+
+h5{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+button{
+    font-size:  .9rem;
+    font-weight: 900;
+    outline: none;
+    border: none;
+    background-color:#1d1d1d;
+    color:aliceblue;
+    padding: 13px 30px;
+    cursor: pointer;
+    transition: 0.5s ease;
+    border-radius: 10px 10px 0 0;
+}
+
+button:hover{
+    color:coral;
+}
+
+navbar{
+    font-size: 16px;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+    top: 0;
+    left: 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0,1);
+}
+
+.navbar-light .navbar-nav .nav-link{
+    padding: 0 20px;
+    color:#000;
+    transition: 0.4s ease;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar i:hover,
+.navbar-light .navbar-nav .nav-link.active
+.navbar i:hover{
+    color:coral;
+}
+
+navbar i{
+    font-size: 1.2rem;
+    padding: 0 0.7px;
+    transition:0.4s ease;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+@media only screen and (max-width:990px){
+    .nav-buttons{
+        margin:10px;
+    }
+
+    .nav-buttons ul{
+        margin: 1rem;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .nav-buttons ul .fas{
+        margin:20px 5px 10px 20px;
+
+    }
+}
+
+#home{
+    background-image: url(../images/mushfresh.png);
+    width: 100%;
+    height:150vh;
+    background-size:cover;
+    /*background-position-x:90px ;
+    background-position-y:80px ;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#home span {
+    color: coral;
+}
+
+#home span:hover{
+    text-transform: uppercase;
+    color:green;
+}
+
+/*footer css*/
+footer{
+    background-color: #222;
+}
+
+footer h5{
+    color:#d8d8d8;
+    font-weight: 700;
+    font-size: 1.2rem;
+
+}
+
+footer li a {
+    font-size: 0.8rem;
+    color: #999;
+    text-decoration: none;
+}
+
+footer li a:hover{
+    color:white;
+
+}
+
+footer .copyright a{
+    color:#000;
+    height: 40px;
+    width: 40px;
+    background-color: #fff;
+    display: inline-block;
+    text-align: center;
+    line-height: 38px;
+    border-radius: 50%;
+    transition: 0.3s ease;
+    margin:0 5px;
+}
+
+footer .copyright a:hover{
+    color:#fff;
+    background-color: #6c7a89;
+}
+
+footer p{
+    color:#fff;
+}
+
+footer .copyright img{
+    width: 30%;
+}
+
+.logo{
+    width: 75px;
+    height: 60px;
+}
+
+.product{
+    cursor: pointer;
+    margin-bottom: 2-rem;
+
+}
+
+.product img{
+    transition:0.3s all;
+}
+
+.product:hover img{
+    transform: scale(1.1);
+}
+.product .buy-btn{
+    background-color: green;
+    transform: translateY(50px);
+    opacity:0;
+    transition: 0.3s all;
+}
+
+.product:hover .buy-btn{
+    transform:translateY(0px);
+    opacity: 1;
+}
+
+hr{
+    width:30px;
+    height:3px !important;
+    background-color: green;
+}
+
+/* why chose us section */
+
+#why-choose-us {
+    background-color: #f8f9fa; /* Background color for the section */
+    padding: 80px 0; /* Adjust padding as needed */
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; /* Center items vertically */
+  }
+  
+  .col-lg-6 {
+    flex: 0 0 50%; /* Set each column to take up 50% of the width */
+  }
+  
+  .section-title {
+    color: #343a40; /* Section title color */
+    font-size: 2.5rem; /* Adjust font size as needed */
+    margin-bottom: 20px; /* Adjust spacing as needed */
+  }
+  
+  .section-description {
+    color: #6c757d; /* Section description color */
+    font-size: 1.2rem; /* Adjust font size as needed */
+    line-height: 1.5; /* Adjust line height for better readability */
+    margin-bottom: 30px; /* Adjust spacing as needed */
+  }
+  
+  /* Add these styles to your existing CSS or create a new file */
+  
+  #why-choose-us {
+    background-color: #f8f9fa; /* Background color for the section */
+    padding: 80px 0; /* Adjust padding as needed */
+    text-align: center; /* Center align text within the section */
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+  }
+  
+  .col-lg-6 {
+    flex: 0 0 50%; /* Set each column to take up 50% of the width */
+  }
+  
+  .section-title {
+    color: #343a40; /* Section title color */
+    font-size: 2.5rem; /* Adjust font size as needed */
+    margin-bottom: 20px; /* Adjust spacing as needed */
+  }
+  
+  .section-description {
+    color: #6c757d; /* Section description color */
+    font-size: 1.2rem; /* Adjust font size as needed */
+    line-height: 1.5; /* Adjust line height for better readability */
+    margin-bottom: 30px; /* Adjust spacing as needed */
+  }
+  
+  .reasons-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .reasons-list li {
+    color: #495057; /* List item text color */
+    font-size: 1.1rem; /* Adjust font size as needed */
+    margin-bottom: 10px; /* Adjust spacing between list items */
+  }
+  
+  /* Style the checkmark icon */
+  .reasons-list li i {
+    color: #28a745; /* Checkmark color */
+    margin-right: 5px; /* Adjust spacing between icon and text */
+  }
+  
+  /* Responsive styling for the image */
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* Add border-radius for rounded corners */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+  }
+
+  /* why chose us section */
+  
+
+.small-img-group  {
+    display:flex;
+    justify-content: space-between;
+}
+
+.small-img-col{
+    flex-basis: 24%;
+    cursor: pointer;
+}
+
+.single-product input{
+    width: 50px;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+.single-product input:focus{
+    outline: none;
+}
+
+.single-product .buy-btn{
+    background-color: gold;
+    opacity: 1;
+    transition: 0.4s ease;
+}
+
+.single-product .buy-btn:hover{
+    background-color: black;
+}
