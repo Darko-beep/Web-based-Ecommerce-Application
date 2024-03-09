@@ -8,27 +8,8 @@
     <link rel="stylesheet"href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="boxicons.min.css">
     
-    <style>
-      .product img{
-        width: 100%;
-        height: auto;
-        box-sizing: border-box;
-        object-fit: cover;
-      }
 
-      .pagination a{
-        color:green;
-        
-      }
-
-      pagination a:hover{
-        color:coral;
-        background-color: greenyellow;
-        
-      }
-    </style>
-
-    <title>MushFarms Shop</title>
+    <title>MushFarms Home</title>
 </head>
 <body>
     
@@ -87,93 +68,35 @@
   <!--end of navbar-->
 
 
-
-  <!--featured-->
-
-<section id="featured" class="my-5 py-5">
-  <div class="container text-center mt-5 py-5">
-    <h3>Our Featured Products</h3>
-    <hr class="mx-auto">
-    <p>Our products are organic, fresh & authentic.</p>
-  </div>
-  <div class="row mx-auto container">
-
-    <div onclick="window.location.href='single_product.html';" class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushfresh.png"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
+<!--Login-->
+<section class="my-5 py-5">
+    <div class="container text-center mt-3 pt-5">
+        <h2 class="form-weight-bold">Login</h2>
+        <hr class="mx-auto">
     </div>
 
-    <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushpack.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
+    <div class="mx-auto container">
+        <form action="" id="login-form">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" id="login-email" placeholder="Email" required>
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" id="login-password" placeholder="password" required>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class="btn" id="login-btn" value="Login" >
+            </div>
+
+            <div class="form-group">
+                <a id="register-url" class="btn" href="">Don't have an account? Register</a>
+            </div>
+        </form>
     </div>
-
-    <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushsac.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
-    </div>
-
-    <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/musgroom 3.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
-    </div>
-
-    <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushsac.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
-    </div>
-
-    <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushsac.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
-    </div>
-
-    <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushsac.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
-    </div>
-
-    <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushsac.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
-    </div>
-
-    <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushsac.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
-    </div>
-
-      <nav aria-label="page navigation example">
-        <ul class="pagination mt-5">
-          <li class="page-item"><a href="" class="page-link">Previous</a></li>
-          <li class="page-item"><a href="" class="page-link">1</a></li>
-          <li class="page-item"><a href="" class="page-link">2</a></li>
-          <li class="page-item"><a href="" class="page-link">3</a></li>
-          <li class="page-item"><a href="" class="page-link">Next</a></li>
-        </ul>
-      </nav>
-
-  </div>
 </section>
-<!--featured mushroom products-->
 
 
 
@@ -182,13 +105,16 @@
 
 
 
-  <!--footer-->
+<!--footer-->
 <footer class="mt-5 py-5">
     <div class="row container mx-auto pt-5">
       <div class="footer-one col-lg-3 col-md-6 col-sm-12">
         <img class="logo" src="assets/images/logo.jpg" alt="logo">
        
-        <p class="pt-3">Message here</p>
+        <p class="pt-3">Mushfam was founded by Zachariah Abubakar and Rashida Moro in the year 2019 and
+          registered as a partnership business with the Registrar general’s department in 2020. The
+          business to change its status to a limited liability company as it upscales its production capacity.
+          The company began its sales and production activity in 2020. </p>
       </div>
       <div class="footer-one col-lg-3 col-md-6 col-sm-12">
         <h5 class="pb-2">Featured</h5>
@@ -252,6 +178,10 @@
 <!--end of footer-->
 
 
+
+
+  
+  
   <script src="https://unpkg.com/boxicons@2.1.3/dist/boxicons.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </body>
