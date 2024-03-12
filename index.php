@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet"href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="boxicons.min.css">
     
 
@@ -74,49 +74,20 @@
     <p>Our products are organic, fresh & authentic.</p>
   </div>
   <div class="row mx-auto container-fluid">
+
+
+  <?php include('server/get_featured_products.php'); ?>
+
+  <?php while($row = $featured_products->fetch_assoc()) { ?>
+
     <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushfresh.png"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
+      <img src="/assets/images/<?php echo $row['product_image']; ?>"  class="img-fluid mb-3"/>
+      <h5 class="p-name"><?php echo $row['product_name']; ?></h5>
+      <h4 class="p-price"><?php echo $row['product_price']; ?></h4>
       <button class="buy-btn">Buy Now</button>
     </div>
 
-    <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushpack.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
-    </div>
-
-    <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushsac.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
-    </div>
-
-    <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/musgroom 3.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
-    </div>
-
-    <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushsac.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
-    </div>
-
-    <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushsac.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
-    </div>
-
-
+    <?php } ?>
   </div>
 </section>
 
