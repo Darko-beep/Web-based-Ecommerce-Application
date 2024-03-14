@@ -83,8 +83,8 @@
     <div class="product text-center col-md-4 col-sm-12">
       <img src="/assets/images/<?php echo $row['product_image']; ?>"  class="img-fluid mb-3"/>
       <h5 class="p-name"><?php echo $row['product_name']; ?></h5>
-      <h4 class="p-price"><?php echo $row['product_price']; ?></h4>
-      <button class="buy-btn">Buy Now</button>
+      <h4 class="p-price">$<?php echo $row['product_price']; ?></h4>
+      <a href="<?php echo "single_product.php?product_id=". $row['product_id']; ?>"><button class="buy-btn">Buy Now</button></a>
     </div>
 
     <?php } ?>
