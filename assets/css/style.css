@@ -109,11 +109,11 @@ navbar i{
 
 #home{
     background-image: url(../images/mushfresh.png);
-    width: 100%;
-    height:150vh;
+    width: 100;
+    height:110vh;
     background-size:cover;
-    /*background-position-x:90px ;
-    background-position-y:80px ;*/
+    background-position-x:90px ;
+    background-position-y:80px ;
     display: flex;
     flex-direction: column;
     justify-content: center;
