@@ -1,6 +1,48 @@
 <?php
+session_start();
+if(isset($_POST['add_to_cart'])){
+if(isset($_SESSION['cart'])){
+  $products_array_ids = array_column($_SESSION['cart'], "product_id");
+  if (!in_array($_POST['product_id'], $products_array_ids) ){
+          $product_array = array(
+            'product_id'=> $_POST['product_id'],
+            'product_name'=> $_POST['product_name'],
+            'product_price'=> $_POST['product_price'],
+            'product_image'=> $_POST['product_image'],
+            'product_quantity'=> $_POST['product_quantity']
+          );
+          $_SESSION['cart'][$product_id] = $product_array;
+
+  }else{
+    echo'<script>alert("Product already added to cart");</script>';
+  }
+
+
+}else{
+        $product_id = $_POST['product_id'];
+        $product_name = $_POST['product_name'];
+        $product_price = $_POST['product_price'];
+        $product_image = $_POST['product_image'];
+        $product_quantity = $_POST['product_quantity'];
+
+        $product_array = array(
+          'product_id' => $product_id,
+          'product_name'=> $product_name,
+          'product_price'=> $product_price,
+          'product_image'=> $product_image,
+          'product_quantity'=> $product_quantity
+        );
+        $_SESSION['cart'][$product_id] = $product_array;
+
+}
+}else{
+
+  header("Location: index.php");
+}
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,23 +53,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet"href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="boxicons.min.css">
-    
-
-    <title>MushFarms Home</title>
-</head>
-<body>
-
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet"href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="boxicons.min.css">
-    
-
     <title>MushFarms Home</title>
 </head>
 <body>
@@ -86,13 +111,15 @@
             <th>Subtotal</th>
         </tr>
 
+        <?php foreach($_SESSION['cart'] as $key => $value ){  ?>
+
         <tr>
             <td>
                 <div class="product-info">
-                    <img src="/assets/images/mushpack.jpg" alt="" width="80"/>
+                    <img src="/assets/images/<?php echo $value['product_image']; ?>"  width="80"/>
                     <div>
-                        <p>Mushrooms</p>
-                        <small><span>$</span>155</small>
+                        <p><?php echo $value['product_name']; ?></p>
+                        <small><span>$</span><?php echo $value['product_price']; ?></small>
                         <br>
                         <a class="remove-btn" href="">Remove</a>
                     </div>
@@ -100,7 +127,7 @@
             </td>
 
             <td>
-                <input type="number" value="1"/>
+                <input type="number" value="<?php echo $value['product_quantity']; ?>"/>
                 <a class="edit-btn" href="">Edit</a>
             </td>
 
@@ -109,55 +136,11 @@
                 <span class="product-price">155</span>
             </td>
 
-            <tr>
-                <td>
-                    <div class="product-info">
-                        <img src="/assets/images/mushpack.jpg" alt="" width="80"/>
-                        <div>
-                            <p>Mushrooms</p>
-                            <small><span>$</span>155</small>
-                            <br>
-                            <a class="remove-btn" href="">Remove</a>
-                        </div>
-                    </div>
-                </td>
-    
-                <td>
-                    <input type="number" value="1"/>
-                    <a class="edit-btn" href="">Edit</a>
-                </td>
-    
-                <td>
-                    <span>$</span>
-                    <span class="product-price">155</span>
-                </td>
-            </tr>
+            <?php } ?>
 
-            <tr>
-                <td>
-                    <div class="product-info">
-                        <img src="/assets/images/mushpack.jpg" alt="" width="80"/>
-                        <div>
-                            <p>Mushrooms</p>
-                            <small><span>$</span>155</small>
-                            <br>
-                            <a class="remove-btn" href="">Remove</a>
-                        </div>
-                    </div>
-                </td>
-    
-                <td>
-                    <input type="number" value="1"/>
-                    <a class="edit-btn" href="">Edit</a>
-                </td>
-    
-                <td>
-                    <span>$</span>
-                    <span class="product-price">155</span>
-                </td>
-            </tr>
+            
 
-        </tr>
+          
     </table>
 
 
