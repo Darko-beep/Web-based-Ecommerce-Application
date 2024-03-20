@@ -1,3 +1,30 @@
+<?php
+session_start();
+if (isset($_POST["add_to_cart"])) {
+    if (isset($_SESSION['cart'])) {
+        $products_array_ids = array_column($_SESSION['cart'], "product_id");
+        if (!in_array($_POST["product_id"], $products_array_ids)) {
+            $product_array = array(
+                "product_id" => $_POST["product_id"],
+                "product_name" => $_POST["product_name"],
+                "product_price" => $_POST["product_price"],
+                "product_image" => $_POST["product_name"], // Assuming this is correct
+                "product_quantity" => $_POST["product_quantity"]
+            );
+            $_SESSION['cart'][] = $product_array; // Add the product array to the session cart
+        } else {
+            // If the product already exists in the cart, update its quantity
+            $product_id = $_POST['product_id'];
+            $product_quantity = $_POST['product_quantity'];
+            $_SESSION['cart'][$product_id]['product_quantity'] += $product_quantity;
+        }
+    } else {
+        // If the cart session variable is not set, redirect to index.php
+        header('location: index.php');
+        exit; // Exit to prevent further execution
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,81 +32,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet"href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="boxicons.min.css">
-    
-
-    <title>MushFarms Home</title>
-</head>
-<body>
-
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet"href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="boxicons.min.css">
     <title>MushFarms Home</title>
 </head>
 <body>
-    
-<!--navbar beginning-->
 <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top">
-  <div class="container-fluid">
-    <!--a class="navbar-brand" href="#">Mushfarms</a> -->
-    <img class="logo" src="/assets/images/logo.jpg" alt="logo">
-    
-    <div class="collapse navbar-collapse nav-buttons" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" href="shop.html">Shop</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="#">Blog</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact Us</a>
-        </li>
-
-        <li class="nav-item">
-          <a href="cart.html"><box-icon name='cart-add'></box-icon></a>
-          <a href="account.html"><box-icon type='solid' name='user-account'></box-icon></a>
-        </li>
-
-        
-        
-      </ul>
-      
+    <div class="container-fluid">
+        <img class="logo" src="/assets/images/logo.jpg" alt="logo">
+        <div class="collapse navbar-collapse nav-buttons" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="shop.html">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="cart.html"><box-icon name='cart-add'></box-icon></a>
+                    <a href="account.html"><box-icon type='solid' name='user-account'></box-icon></a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>
-<!--end of navbar-->
-
-
-<!--cart-->
 <section class="cart container my-5 py-5">
     <div class="container mt-5">
-        <h2 class="font-weight-bolde">Your Cart</h2>
+        <h2 class="font-weight-bold">Your Cart</h2>
         <hr>
     </div>
-
     <table class="mt-5 pt-5">
         <tr>
             <th>Products</th>
             <th>Quantity</th>
             <th>Subtotal</th>
         </tr>
-
         <tr>
             <td>
                 <div class="product-info">
@@ -92,69 +85,16 @@
                     </div>
                 </div>
             </td>
-
             <td>
                 <input type="number" value="1"/>
                 <a class="edit-btn" href="">Edit</a>
             </td>
-
             <td>
                 <span>$</span>
                 <span class="product-price">155</span>
             </td>
-
-            <tr>
-                <td>
-                    <div class="product-info">
-                        <img src="/assets/images/mushpack.jpg" alt="" width="80"/>
-                        <div>
-                            <p>Mushrooms</p>
-                            <small><span>$</span>155</small>
-                            <br>
-                            <a class="remove-btn" href="">Remove</a>
-                        </div>
-                    </div>
-                </td>
-    
-                <td>
-                    <input type="number" value="1"/>
-                    <a class="edit-btn" href="">Edit</a>
-                </td>
-    
-                <td>
-                    <span>$</span>
-                    <span class="product-price">155</span>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <div class="product-info">
-                        <img src="/assets/images/mushpack.jpg" alt="" width="80"/>
-                        <div>
-                            <p>Mushrooms</p>
-                            <small><span>$</span>155</small>
-                            <br>
-                            <a class="remove-btn" href="">Remove</a>
-                        </div>
-                    </div>
-                </td>
-    
-                <td>
-                    <input type="number" value="1"/>
-                    <a class="edit-btn" href="">Edit</a>
-                </td>
-    
-                <td>
-                    <span>$</span>
-                    <span class="product-price">155</span>
-                </td>
-            </tr>
-
         </tr>
     </table>
-
-
     <div class="cart-total">
         <table>
             <tr>
@@ -167,33 +107,10 @@
             </tr>
         </table>
     </div>
-
     <div class="checkout-container">
-      <button class="btn checkout-btn">Checkout</button>
+        <button class="btn checkout-btn">Checkout</button>
     </div>
-
-
-
-
-
-
-
-
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!--footer-->
 <footer class="mt-5 py-5">
