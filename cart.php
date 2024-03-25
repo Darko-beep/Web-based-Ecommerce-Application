@@ -1,30 +1,49 @@
 <?php
 session_start();
-if (isset($_POST["add_to_cart"])) {
-    if (isset($_SESSION['cart'])) {
-        $products_array_ids = array_column($_SESSION['cart'], "product_id");
-        if (!in_array($_POST["product_id"], $products_array_ids)) {
+
+if(isset($_POST['add_to_cart'])){
+
+    if(isset($_SESSION['cart'])){
+        $products_array_ids = array_column($_SESSION['cart'],"product_id");
+        if(!in_array($_POST['product_id'], $products_array_ids)){
             $product_array = array(
-                "product_id" => $_POST["product_id"],
-                "product_name" => $_POST["product_name"],
-                "product_price" => $_POST["product_price"],
-                "product_image" => $_POST["product_name"], // Assuming this is correct
-                "product_quantity" => $_POST["product_quantity"]
+                'product_id' => $_POST['product_id'],
+                'product_name' => $_POST['product_name'],
+                'product_price' => $_POST['product_price'],
+                'product_image' => $_POST['product_image'],
+                'product_quantity' => $_POST['product_quantity']
             );
-            $_SESSION['cart'][] = $product_array; // Add the product array to the session cart
+
+            $_SESSION['cart'][$_POST['product_id']] = $product_array;
+
         } else {
-            // If the product already exists in the cart, update its quantity
-            $product_id = $_POST['product_id'];
-            $product_quantity = $_POST['product_quantity'];
-            $_SESSION['cart'][$product_id]['product_quantity'] += $product_quantity;
+            echo '<script>alert("Product already added");</script>';
         }
+
     } else {
-        // If the cart session variable is not set, redirect to index.php
-        header('location: index.php');
-        exit; // Exit to prevent further execution
+
+        $product_id = $_POST['product_id'];
+        $product_name = $_POST['product_name'];
+        $product_price = $_POST['product_price'];
+        $product_image = $_POST['product_image'];
+        $product_quantity = $_POST['product_quantity'];
+
+        $product_array = array(
+            'product_id' => $product_id,
+            'product_name' => $product_name,
+            'product_price' => $product_price,
+            'product_image' => $product_image,
+            'product_quantity' => $product_quantity
+        );
+
+        $_SESSION['cart'][$product_id] = $product_array;
     }
+
+} else {
+    header('location: index.php');
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,37 +92,44 @@ if (isset($_POST["add_to_cart"])) {
             <th>Quantity</th>
             <th>Subtotal</th>
         </tr>
+        <?php
+        $total = 0;
+        foreach($_SESSION['cart'] as $key => $value) {
+            $subtotal = (array_key_exists('product_price', $value) && array_key_exists('product_quantity', $value)) ? $value['product_price'] * $value['product_quantity'] : 0;
+            $total += $subtotal;
+        ?>
         <tr>
             <td>
                 <div class="product-info">
-                    <img src="/assets/images/mushpack.jpg" alt="" width="80"/>
+                    <img src="/assets/images/<?php echo $value['product_image'] ?? ''; ?>"  width="80"/>
                     <div>
-                        <p>Mushrooms</p>
-                        <small><span>$</span>155</small>
+                        <p><?php echo $value['product_name'] ?? ''; ?></p>
+                        <small><span>$</span><?php echo $value['product_price'] ?? ''; ?></small>
                         <br>
                         <a class="remove-btn" href="">Remove</a>
                     </div>
                 </div>
             </td>
             <td>
-                <input type="number" value="1"/>
+                <input type="number" value="<?php echo $value['product_quantity'] ?? ''; ?>"/>
                 <a class="edit-btn" href="">Edit</a>
             </td>
             <td>
                 <span>$</span>
-                <span class="product-price">155</span>
+                <span class="product-price"><?php echo $subtotal; ?></span>
             </td>
         </tr>
+        <?php } ?>
     </table>
     <div class="cart-total">
         <table>
             <tr>
                 <td>Subtotal</td>
-                <td>$155</td>
+                <td>$<?php echo $total; ?></td>
             </tr>
             <tr>
                 <td>Total Amount</td>
-                <td>$155</td>
+                <td>$<?php echo $total; ?></td>
             </tr>
         </table>
     </div>
@@ -119,7 +145,7 @@ if (isset($_POST["add_to_cart"])) {
         <img class="logo" src="assets/images/logo.jpg" alt="logo">
        
         <p class="pt-3">Mushfam was founded by Zachariah Abubakar and Rashida Moro in the year 2019 and
-          registered as a partnership business with the Registrar general’s department in 2020. The
+          registered as a partnership business with the Registrar general's department in 2020. The
           business to change its status to a limited liability company as it upscales its production capacity.
           The company began its sales and production activity in 2020. </p>
       </div>
@@ -183,10 +209,6 @@ if (isset($_POST["add_to_cart"])) {
     </div>
 </footer>
 <!--end of footer-->
-
-
-
-
  
     <script src="https://unpkg.com/boxicons@2.1.3/dist/boxicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
