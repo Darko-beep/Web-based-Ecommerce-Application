@@ -32,4 +32,4 @@ if (isset($_POST['place_order'])) {
         echo "Error preparing SQL statement: " . $conn->error;
     }
 }
-?>
+
