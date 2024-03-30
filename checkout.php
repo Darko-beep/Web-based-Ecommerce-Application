@@ -35,7 +35,7 @@ if(!empty($_SESSION['cart']) && isset($_POST['checkout'])){
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         
         <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="index.php">Home</a>
         </li>
         
         <li class="nav-item">
@@ -51,7 +51,7 @@ if(!empty($_SESSION['cart']) && isset($_POST['checkout'])){
         </li>
 
         <li class="nav-item">
-          <a href="cart.html"><box-icon name='cart-add'></box-icon></a>
+          <a href="cart.php"><box-icon name='cart-add'></box-icon></a>
           <a href="account.html"><box-icon type='solid' name='user-account'></box-icon></a>
         </li>
 
@@ -73,7 +73,7 @@ if(!empty($_SESSION['cart']) && isset($_POST['checkout'])){
     </div>
 
     <div class="mx-auto container">
-        <form action="server/place_order.php" method="post" id="checkout-form" >
+        <form action="./server/place_order.php" method="post" id="checkout-form" >
             <div class="form-group">
                 <div class="form-group checkout-small-element">
                     <label>Name</label>
@@ -185,10 +185,6 @@ if(!empty($_SESSION['cart']) && isset($_POST['checkout'])){
     </div>
 </footer>
 <!--end of footer-->
-
-
-
-
   
   
   <script src="https://unpkg.com/boxicons@2.1.3/dist/boxicons.js"></script>

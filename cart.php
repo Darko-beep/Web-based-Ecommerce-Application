@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -42,30 +41,31 @@ if(isset($_POST['add_to_cart'])){
 
      calculateTotalCart() ;
 
-
-
-}else if (isset($_POST['remove_product'])){
+} else if (isset($_POST['remove_product'])){
     
     $product_id = $_POST['product_id'];
     unset($_SESSION['cart'][$product_id]);
 
     calculateTotalCart() ;
 
-    
-
-}else if(isset($_POST['edit_quantity'])){
+} else if(isset($_POST['edit_quantity'])){
     $product_id = $_POST['product_id'];
     $product_quantity = $_POST['product_quantity'];
 
-    $product_array = $_SESSION['cart'][$product_id];
+    // Check if the product exists in the cart
+    if(isset($_SESSION['cart'][$product_id])) {
+        // Update the quantity of the product
+        $_SESSION['cart'][$product_id]['product_quantity'] = $product_quantity;
+    }
 
-    $product_array['product_quantity'] = $product_quantity;
+    calculateTotalCart();
 
-    $_SESSION['cart'][$product_id] = $product_array;
+} else if(isset($_POST['clear_cart'])){
+    // Unset the 'cart' session variable
+    unset($_SESSION['cart']);
 
-    calculateTotalCart() ;
-
-
+    // Set the total amount to zero
+    $_SESSION['total'] = 0;
 } else {
     header('location: index.php');
 }
@@ -82,13 +82,13 @@ function calculateTotalCart(){
         $quantity = $product['product_quantity'];
 
         $total += ($price * $quantity);
-}
+    }
 
     $_SESSION['total' ] = $total;
 
 }
-
 ?>
+
 
 
 
@@ -110,7 +110,7 @@ function calculateTotalCart(){
         <div class="collapse navbar-collapse nav-buttons" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="shop.html">Shop</a>
@@ -122,7 +122,7 @@ function calculateTotalCart(){
                     <a class="nav-link" href="contact.html">Contact Us</a>
                 </li>
                 <li class="nav-item">
-                    <a href="cart.html"><box-icon name='cart-add'></box-icon></a>
+                    <a href="cart.php"><box-icon name='cart-add'></box-icon></a>
                     <a href="account.html"><box-icon type='solid' name='user-account'></box-icon></a>
                 </li>
             </ul>
@@ -187,8 +187,8 @@ function calculateTotalCart(){
         </table>
     </div>
     <div class="checkout-container">
-        <form action="checkout.php" method="post" >
-           <input type="submit" class="btn checkout-btn" value="Checkout" name="checkout" > 
+            <form action="checkout.php" method="post" >
+            <input type="submit" class="btn checkout-btn" value="Checkout" name="checkout" > 
         </form>
         
     </div>

@@ -42,7 +42,7 @@ if(isset($_GET['product_id'])){
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         
         <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="index.php">Home</a>
         </li>
         
         <li class="nav-item">
@@ -58,7 +58,7 @@ if(isset($_GET['product_id'])){
         </li>
 
         <li class="nav-item">
-          <a href="cart.html"><box-icon name='cart-add'></box-icon></a>
+          <a href="cart.php"><box-icon name='cart-add'></box-icon></a>
           <a href="account.html"><box-icon type='solid' name='user-account'></box-icon></a>
         </li>
 
