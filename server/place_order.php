@@ -58,4 +58,5 @@ foreach($_SESSION['cart'] as $key => $value ){
 
 
 //inform user whether everything is fine  or not
-header('location: ../payment.php?order_status"order placed successfully"');
+header('location: ../payment.php?order_status=Order Placed Successfully');
+//header('Location: ../payment.php?order_status=order%20placed%20successfully');

@@ -2,6 +2,7 @@
 
 session_start();
 
+
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +66,7 @@ session_start();
         <hr class="mx-auto">
     </div>
     <div class="mx-auto container text-center">
-        <!--<p><?php echo $_GET['order_status']; ?></p>-->
+        <?php echo $_GET['order_status']; ?>
         <p>Total Payment: $<?php echo $_SESSION['total']; ?></p>
         <input class="btn btn-primary" value="Pay now" type="submit">
     </div>
