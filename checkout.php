@@ -190,4 +190,4 @@ if(!empty($_SESSION['cart']) && isset($_POST['checkout'])){
   <script src="https://unpkg.com/boxicons@2.1.3/dist/boxicons.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </body>
-</html>
+</html> 

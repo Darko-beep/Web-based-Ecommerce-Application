@@ -64,9 +64,8 @@ session_start();
         <h2 class="form-weight-bold">Payment</h2>
         <hr class="mx-auto">
     </div>
-
     <div class="mx-auto container text-center">
-        <p><?php echo $_GET['order_status'] ?></p>
+        <!--<p><?php echo $_GET['order_status']; ?></p>-->
         <p>Total Payment: $<?php echo $_SESSION['total']; ?></p>
         <input class="btn btn-primary" value="Pay now" type="submit">
     </div>

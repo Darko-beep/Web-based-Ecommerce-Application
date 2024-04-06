@@ -52,3 +52,10 @@ foreach($_SESSION['cart'] as $key => $value ){
     $stmt1->execute();
 
 }
+
+//remove everthing from the cart 
+
+
+
+//inform user whether everything is fine  or not
+header('location: ../payment.php?order_status"order placed successfully"');
