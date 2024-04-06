@@ -21,7 +21,7 @@ if (isset($_POST['place_order'])) {
         $stmt->bind_param('isiisss', $order_cost, $order_status, $user_id, $phone, $city, $address, $order_date);
         if ($stmt->execute()) {
             $order_id = $stmt->insert_id;
-            echo $order_id;
+
         } else {
             // Error executing the SQL statement
             echo "Error executing SQL statement: " . $stmt->error;
@@ -33,3 +33,22 @@ if (isset($_POST['place_order'])) {
     }
 }
 
+//get products from the cart 
+$_SESSION['cart'];
+foreach($_SESSION['cart'] as $key => $value ){
+    $product = $_SESSION['cart'][$key];
+    $product_id = $product['product_id'];
+    $product_name = $product['product_name'];
+    $product_image = $product['product_image'];
+    $product_price = $product['product_price'];
+    $product_quantity = $product['product_quantity'];
+
+
+    $stmt1 = $conn->prepare("INSERT INTO order_items ( order_id,product_id,product_name,product_image,product_price,product_quantity,user_id,order_date ) 
+                     VALUES  (?,?,?,?,?,?,?,?)");
+    
+    $stmt1->bind_param("iissiiis",$order_id,$product_id, $product_name,$product_image, $product_price ,$product_quantity,$user_id,$order_date);
+
+    $stmt1->execute();
+
+}
