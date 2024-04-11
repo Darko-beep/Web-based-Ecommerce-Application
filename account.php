@@ -57,7 +57,6 @@ if(isset($_POST['change_password'])){
     <link rel="stylesheet"href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="boxicons.min.css">
     
-
     <title>MushFarms Home</title>
 </head>
 <body>
@@ -90,9 +89,7 @@ if(isset($_POST['change_password'])){
             <li class="nav-item">
               <a href="cart.html"><box-icon name='cart-add'></box-icon></a>
               <a href="account.html"><box-icon type='solid' name='user-account'></box-icon></a>
-            </li>
-    
-            
+            </li>           
             
           </ul>
           
@@ -100,7 +97,6 @@ if(isset($_POST['change_password'])){
       </div>
     </nav>
     <!--end of navbar-->
-
 
 <!--Account-->
 <section class="my-5 py-5">
@@ -144,7 +140,6 @@ if(isset($_POST['change_password'])){
     </div>
 </section>
 
-
 <!--Orders-->
 <section id="orders" class="orders container my-5 py-3">
     <div class="container mt-2">
@@ -180,17 +175,7 @@ if(isset($_POST['change_password'])){
         </tr>
     </table>
 
-
-
-
-
-
-
-
-
-
 </section>
-
 
 <!--footer-->
 <footer class="mt-5 py-5">
@@ -228,8 +213,7 @@ if(isset($_POST['change_password'])){
           <p>info@email.com</p>
         </div>       
       </div>
-      
-      
+            
       <div class="footer-one col-lg-3 col-md-6 col-sm-12">
         <h5 class="pb-2">instagram</h5>    
           <div class="row">
@@ -264,11 +248,6 @@ if(isset($_POST['change_password'])){
 </footer>
 <!--end of footer-->
 
-
-
-
-  
-  
   <script src="https://unpkg.com/boxicons@2.1.3/dist/boxicons.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </body>
