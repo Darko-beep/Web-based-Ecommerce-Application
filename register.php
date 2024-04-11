@@ -21,7 +21,7 @@ if(isset($_POST["register"])) {
     }
 
     // Hash the password
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+   // $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Check if a user with the same email already exists in the database
     $stmt1 = $conn->prepare("SELECT count(*) FROM users WHERE user_email = ?");
@@ -39,7 +39,7 @@ if(isset($_POST["register"])) {
 
     // Create a new user
     $stmt = $conn->prepare("INSERT INTO users (user_name, user_email, user_password) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $name, $email, $hashedPassword);
+  $stmt->bind_param("sss", $name, $email, $password /*$hashedPassword*/);
 
     // Execute the insert query
     if($stmt->execute()) {
@@ -47,7 +47,7 @@ if(isset($_POST["register"])) {
         $_SESSION["user_email"] = $email;
         $_SESSION["logged_in"] = true;
 
-        header("location: account.php?register=Registration was successful");
+        header("location: account.php?register_success=Registration was successful");
         exit();
     } else {
         header("location: register.php?error=Something went wrong while trying to register account");

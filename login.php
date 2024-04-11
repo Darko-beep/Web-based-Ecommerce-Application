@@ -14,7 +14,7 @@ if(isset( $_SESSION['logged_in'])){
 if(isset($_POST['login_btn'])) {
 
   $email  = $_POST['email'];
-  $password = md5($_POST['password']);
+  $password = ($_POST['password']);
 
   $stmt = $conn->prepare("SELECT user_id,user_name,user_email,user_password FROM users WHERE user_email = ? AND user_password = ? LIMIT 1");
 
@@ -34,7 +34,7 @@ if(isset($_POST['login_btn'])) {
      $_SESSION["user_email"] = $user_email;
      $_SESSION["logged_in"] = true;
 
-     header('location: account.php?message=logged in successfully');
+     header('location: account.php?login_success=logged in successfully');
 
     
     }else{
