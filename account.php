@@ -45,6 +45,17 @@ if(isset($_POST['change_password'])){
   }
 }
 
+//get orders 
+if(isset($_SESSION['logged_in'])) {
+
+  $user_id = $_SESSION['user_id'];
+  $stmt = $conn->prepare("SELECT * FROM orders WHERE user_id=? ");
+  $stmt->bind_param('i',$user_id );
+  $stmt->execute();
+
+  $orders = $stmt->get_result();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -149,30 +160,55 @@ if(isset($_POST['change_password'])){
 
     <table class="mt-5 pt-5">
         <tr>
-            <th>Products</th>
-            <th>Date</th>
+            <th>Order id</th>
+            <th>Order cost</th>
+            <th>Order status</th>
+            <th>Order date</th>
+            <th>order details</th>
           
         </tr>
 
+       <?php while($row = $orders->fetch_assoc()) { ?>
+
+
         <tr>
             <td>
-                <div class="product-info">
-                    <img src="/assets/images/mushpack.jpg" alt="">
+                    <!--
+                      <div class="product-info">
+                    <img src="/assets/images/mushpack.jpg" alt=""> 
 
-                    <div>
-                        <p class="mt-3">Mushrooms</p>
+                    <div> 
+                        <p class="mt-3"><?php echo  $row['order_id']; ?></p>
                     </div>
 
                 </div>
+                    -->
+              <span><?php echo $row['order_id']; ?></span>
             </td>
 
             <td>
-               <span>2024/03/09</span>
+              <span><?php echo $row['order_cost']; ?></span>
+            </td>
+
+            <td>
+              <span><?php echo $row['order_status']; ?></span>
+            </td>
+
+            <td>
+              <span><?php echo $row['order_date']; ?></span>
+            </td>
+
+            <td>
+              <form>
+                <input class="btn order-details-btn" type="submit" value="details" />
+              </form>
             </td>
 
           
         
         </tr>
+
+<?php } ?>
     </table>
 
 </section>

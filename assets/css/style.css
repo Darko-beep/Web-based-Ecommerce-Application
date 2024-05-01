@@ -512,15 +512,14 @@ th:last-child{
 }
 
 .orders th{
-    text-align: left;
     padding: 5px 10px;
     color: #fff;
     background-color: #fb774b;
-    text-align: left;
+    /*text-align: left;*/
 }
 
 .ordersth:nth-child(2){
-    text-align:right ;
+    /*text-align:right ;*/
 }
 orders td{
     padding: 10px 20px;
@@ -531,6 +530,11 @@ orders td{
     width: 80px;
     height: 80px;
     margin-right: 10px;
+}
+
+.orders .order-details-btn{
+    color: #fff;
+    background-color: #fb774b;
 }
 
 /*Checkout*/
