@@ -199,8 +199,9 @@ if(isset($_SESSION['logged_in'])) {
             </td>
 
             <td>
-              <form>
-                <input class="btn order-details-btn" type="submit" value="details" />
+              <form method="POST" action="order_details.php" >
+                <input type="hidden" name="order_id"  value="<?php echo $row['order_id']; ?>" />
+                <input class="btn order-details-btn" name="order_details_btn" type="submit" value="details" />
               </form>
             </td>
 
