@@ -27,7 +27,7 @@ if(!empty($_SESSION['cart']) ){
             <?php if(isset($_GET['message'])){ echo $_GET['message'];} ?></p>
             <?php if(isset($_GET['message'])){ ?>
 
-                <a class="btn btn-primary" href="login.php"></a>
+                <a class="btn btn-primary " href="login.php"></a>
 
             <?php } ?>
             <div class="form-group">

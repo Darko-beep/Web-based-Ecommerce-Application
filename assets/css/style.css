@@ -107,17 +107,27 @@ navbar i{
     }
 }
 
+@keyframes bounce {
+    0%, 100% {
+      transform: scale(1.0);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+
+
 #home{
     background-image: url(../images/mushfresh.png);
     width: 100%;
-    height:150vh;
-    background-size:cover;
-    /*background-position-x:90px ;
-    background-position-y:80px ;*/
+    height: 100vh;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    animation: bounce 5s infinite;
+
 }
 
 #home span {
@@ -516,12 +526,14 @@ th:last-child{
     padding: 5px 10px;
     color: #fff;
     background-color: #fb774b;
-    /*text-align: left;*/
+    text-align: left;
 }
+
 
 .ordersth:nth-child(2){
     /*text-align:right ;*/
 }
+
 orders td{
     padding: 10px 20px;
 

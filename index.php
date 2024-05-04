@@ -5,7 +5,7 @@
 <section id="home">
   <div class="container">
     <h5>Welcome To MushFams</h5>
-    <h1><span>MushFams</span> is Located at Offinso</h1>
+    <h1><span>MUSHFAM</span> is Located at Offinso</h1>
     <p>MushFams provides you with the best</p>
     <button>Buy From Us</button>
   </div>
