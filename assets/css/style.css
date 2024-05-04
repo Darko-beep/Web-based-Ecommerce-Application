@@ -178,10 +178,10 @@ footer .copyright img{
     width: 30%;
 }
 
-.logo{
-    width: 75px;
-    height: 60px;
-}
+.logo {
+    width: 120px; /* Increase the width */
+    height: 100px; /* Keep the original height */
+  }
 
 .product{
     cursor: pointer;

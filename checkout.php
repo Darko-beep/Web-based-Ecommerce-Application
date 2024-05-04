@@ -2,7 +2,7 @@
 
 session_start();
 
-if(!empty($_SESSION['cart']) && isset($_POST['checkout'])){
+if(!empty($_SESSION['cart']) ){
 
 }else{
   header('location: index.php');
@@ -23,6 +23,13 @@ if(!empty($_SESSION['cart']) && isset($_POST['checkout'])){
 
     <div class="mx-auto container">
         <form action="./server/place_order.php" method="post" id="checkout-form" >
+            <p class="text-center" style="color: red;" >
+            <?php if(isset($_GET['message'])){ echo $_GET['message'];} ?></p>
+            <?php if(isset($_GET['message'])){ ?>
+
+                <a class="btn btn-primary" href="login.php"></a>
+
+            <?php } ?>
             <div class="form-group">
                 <div class="form-group checkout-small-element">
                     <label>Name</label>

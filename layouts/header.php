@@ -25,7 +25,7 @@
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href="shop.html">Shop</a>
+          <a class="nav-link" href="shop.php">Shop</a>
         </li>
 
         <li class="nav-item">
@@ -38,7 +38,7 @@
 
         <li class="nav-item">
           <a href="cart.php"><box-icon name='cart-add'></box-icon></a>
-          <a href="account.html"><box-icon type='solid' name='user-account'></box-icon></a>
+          <a href="account.php"><box-icon type='solid' name='user-account'></box-icon></a>
         </li>
 
         

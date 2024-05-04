@@ -1,43 +1,22 @@
-
 <?php
-
-/*
-not paid
-paid
-shipped
-delivered
-*/
-
+/* not paid paid shipped delivered */
 include('server/connection.php');
 
-if(isset($_POST['order_details_btn'])  && isset($_POST['order_id'])){
-
-    $order_id= $_POST['order_id'];
-    $order_status= $_POST['order_status'];
-     
-
+if (isset($_POST['order_details_btn']) && isset($_POST['order_id'])) {
+    $order_id = $_POST['order_id'];
+    $order_status = isset($_POST['order_status']) ? $_POST['order_status'] : '';
     $stmt = $conn->prepare("SELECT * FROM order_items WHERE order_id = ?");
-
     $stmt->bind_param('i', $order_id);
-
     $stmt->execute();
-
     $order_details = $stmt->get_result();
-
-    
 }
 /*else{
-
     header('location: account.php');
     exit;
-} 
-*/
+}*/
 ?>
 
-
-<?php  include('layouts/header.php')  ?>
-
-
+<?php include('layouts/header.php') ?>
 
 <!--Order Details-->
 <section id="orders" class="orders container my-5 py-3">
@@ -51,7 +30,6 @@ if(isset($_POST['order_details_btn'])  && isset($_POST['order_id'])){
             <th>Product Name</th>
             <th>Price</th>
             <th>Quantity</th>
-            
         </tr>
         <?php
         if (isset($order_details) && $order_details->num_rows > 0) {
@@ -79,21 +57,13 @@ if(isset($_POST['order_details_btn'])  && isset($_POST['order_id'])){
             echo "<tr><td colspan='3'>No order details found.</td></tr>";
         }
         ?>
-     
-
     </table>
 
-    <?php if($order_status == "not paid"){?>
-
-      <form action="">
-        <input type="submit" class="btn btn-primary" value="Pay Now" >
-      </form>
-
-
-      <?php } ?>
-
+    <?php if (isset($order_status) && $order_status == "not paid") { ?>
+        <form action="">
+            <input type="submit" class="btn btn-primary" value="Pay Now">
+        </form>
+    <?php } ?>
 </section>
 
-
-
-<?php  include('layouts/footer.php')  ?>
+<?php include('layouts/footer.php') ?>

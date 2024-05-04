@@ -2,6 +2,14 @@
 session_start();
 include 'connection.php';
 
+
+    //if user is not logged in
+if(!isset($_SESSION['logged_in'])){
+    header('location: ../checkout.php?message=Please Login First/Register to  Continue');
+
+    //if user is logged in
+}else{
+
 if (isset($_POST['place_order'])) {
     //get user info and store into the database
     $name = $_POST['name'];
@@ -60,3 +68,5 @@ foreach($_SESSION['cart'] as $key => $value ){
 //inform user whether everything is fine  or not
 header('location: ../payment.php?order_status=Order Placed Successfully');
 //header('Location: ../payment.php?order_status=order%20placed%20successfully');
+
+}
