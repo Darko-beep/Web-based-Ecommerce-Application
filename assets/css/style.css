@@ -197,10 +197,11 @@ footer .copyright img{
     transform: scale(1.1);
 }
 .product .buy-btn{
-    background-color: green;
+    background-color: #fb774b;
     transform: translateY(50px);
     opacity:0;
     transition: 0.3s all;
+    color: #fff;
 }
 
 .product:hover .buy-btn{

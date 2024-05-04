@@ -1,3 +1,19 @@
+<?php 
+
+include('server/connection.php');
+
+$stmt = $conn->prepare("SELECT * FROM products");
+
+$stmt->execute();
+
+$featured_products = $stmt->get_result();
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,7 +90,7 @@
 
 
 
-  <!--featured-->
+  <!--Shop-->
 
 <section id="featured" class="my-5 py-5">
   <div class="container text-center mt-5 py-5">
@@ -84,69 +100,17 @@
   </div>
   <div class="row mx-auto container">
 
-    <div onclick="window.location.href='single_product.html';" class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushroom_sac.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
+  <?php while($row = $featured_products->fetch_assoc()) { ?>
+
+    <div onclick="window.location.href='single_product.php';" class="product text-center col-md-4 col-sm-12">
+      <img src="/assets/images/<?php echo $row['product_image']; ?>"  class="img-fluid mb-3"/>
+      <h5 class="p-name"><?php echo $row['product_name']; ?></h5>
+      <h4 class="p-price"><?php echo $row['product_price']; ?></h4>
+      <a class="btn buy-btn" href="single_product.php?product_id=<?php echo $row['product_id']?>">Buy Now</a>
     </div>
 
-    <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushroom_basket_advert_same.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
-    </div>
-
-    <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushroom_basket_advert.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
-    </div>
-
-    <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushroom_sac.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
-    </div>
-
-    <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushroom_basket_advert_same.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
-    </div>
-
-    <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushroom_basket_advert.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
-    </div>
-
-    <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushroom_sac.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
-    </div>
-
-    <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushroom_basket_advert_same.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
-    </div>
-
-    <div class="product text-center col-md-4 col-sm-12">
-      <img src="/assets/images/mushroom_basket_advert.jpg"  class="img-fluid mb-3"/>
-      <h5 class="p-name">Mushrooms</h5>
-      <h4 class="p-price">$199.8</h4>
-      <button class="buy-btn">Buy Now</button>
-    </div>
-
+      <?php } ?>
+ 
       <nav aria-label="page navigation example">
         <ul class="pagination mt-5">
           <li class="page-item"><a href="" class="page-link">Previous</a></li>
